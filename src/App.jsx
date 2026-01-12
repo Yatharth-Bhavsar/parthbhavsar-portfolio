@@ -146,6 +146,9 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [showNav, setShowNav] = useState(false);
+  
+  // STATE LIFTED: Manage selected project here so Navbar can close it
+  const [selectedItem, setSelectedItem] = useState(null);
 
   // Parallax Effect & Scroll Handling
   useEffect(() => {
@@ -159,8 +162,13 @@ export default function App() {
   }, []);
 
   const scrollTo = (id) => {
+    // 1. Close the project modal if open
+    setSelectedItem(null);
+
+    // 2. Scroll to section
     const element = document.getElementById(id);
     if (element) {
+      // Small timeout to allow modal close animation if needed, but instant is snappier
       element.scrollIntoView({ behavior: 'smooth' });
       setActiveSection(id);
       setMenuOpen(false);
@@ -219,9 +227,9 @@ export default function App() {
       {/* BACKGROUND TEXTURE */}
       <div className="paper-texture"></div>
 
-      {/* NAVIGATION */}
+      {/* NAVIGATION - Z-Index increased to 120 to stay ABOVE modal (z-100) */}
       <nav 
-        className={`fixed top-0 w-full z-50 px-6 py-4 md:py-6 flex justify-between items-center mix-blend-difference text-white transition-all duration-700 ease-in-out ${
+        className={`fixed top-0 w-full z-[120] px-6 py-4 md:py-6 flex justify-between items-center mix-blend-difference text-white transition-all duration-700 ease-in-out ${
           showNav ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
         }`}
       >
@@ -257,7 +265,7 @@ export default function App() {
       </nav>
 
       {/* Mobile Overlay Menu */}
-      <div className={`fixed inset-0 bg-[#F9F7F2] z-40 transform transition-transform duration-500 ease-in-out flex flex-col justify-center items-center space-y-8 ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+      <div className={`fixed inset-0 bg-[#F9F7F2] z-[110] transform transition-transform duration-500 ease-in-out flex flex-col justify-center items-center space-y-8 ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         {['Home', 'About', 'Gallery', 'Contact'].map((item) => (
           <button 
             key={item}
@@ -273,9 +281,21 @@ export default function App() {
       <main className="relative z-10">
         <HomeSection scrollY={scrollY} />
         <AboutSection />
-        <GallerySection items={PORTFOLIO_ITEMS} />
+        
+        {/* Pass state control down to Gallery */}
+        <GallerySection 
+            items={PORTFOLIO_ITEMS} 
+            selectedItem={selectedItem}
+            setSelectedItem={setSelectedItem}
+        />
+        
         <ContactSection />
       </main>
+
+      {/* Lightbox / Project Modal - Rendered at App level for cleaner state control */}
+      {selectedItem && (
+        <ProjectModal item={selectedItem} onClose={() => setSelectedItem(null)} />
+      )}
 
     </div>
   );
@@ -382,10 +402,9 @@ function AboutSection() {
   );
 }
 
-function GallerySection({ items }) {
+function GallerySection({ items, selectedItem, setSelectedItem }) {
   const [filter, setFilter] = useState('All');
-  const [selectedItem, setSelectedItem] = useState(null);
-
+  
   const filteredItems = filter === 'All' 
     ? items 
     : items.filter(item => item.category === filter);
@@ -448,11 +467,6 @@ function GallerySection({ items }) {
         </div>
 
       </div>
-
-      {/* Lightbox / Project Modal */}
-      {selectedItem && (
-        <ProjectModal item={selectedItem} onClose={() => setSelectedItem(null)} />
-      )}
     </section>
   );
 }
@@ -466,13 +480,14 @@ function ProjectModal({ item, onClose }) {
 
   return (
     <div 
-        className="fixed inset-0 z-[100] flex items-center justify-center bg-[#F9F7F2] bg-opacity-95 backdrop-blur-sm p-4 md:p-10 animate-fade-in cursor-pointer"
+        className="fixed inset-0 z-[100] flex items-start md:items-center justify-center bg-[#F9F7F2] bg-opacity-95 backdrop-blur-sm px-4 md:p-10 animate-fade-in cursor-pointer pt-24 md:pt-10"
         onClick={onClose} 
     >
       
       {/* Content Container */}
+      {/* Added mb-4 for mobile to give spacing at bottom */}
       <div 
-        className="w-full max-w-6xl h-full flex flex-col md:flex-row bg-white shadow-2xl overflow-hidden relative cursor-default"
+        className="w-full max-w-6xl h-[calc(100vh-120px)] md:h-full flex flex-col md:flex-row bg-white shadow-2xl overflow-hidden relative cursor-default"
         onClick={(e) => e.stopPropagation()}
       >
         
