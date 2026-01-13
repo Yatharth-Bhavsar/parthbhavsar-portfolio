@@ -105,7 +105,7 @@ const CATEGORIES = ["All", "Architecture", "Pop Culture", "Sanjhi", "Islamic Geo
  */
 const AssetImg = ({ filename, alt, className, style, isBackground = false }) => {
   const [error, setError] = useState(false);
-  const path = `/assets/images/${filename}`;
+  const path = `assets/images/${filename}`;
 
   if (error) {
     if (isBackground) {
@@ -248,7 +248,7 @@ export default function App() {
     const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
     link.type = 'image/jpeg';
     link.rel = 'icon';
-    link.href = 'public/assets/images/artist-portrait.png';
+    link.href = 'assets/images/artist-portrait.png';
     document.getElementsByTagName('head')[0].appendChild(link);
   }, []);
 
@@ -468,7 +468,7 @@ export default function App() {
         <div className="absolute inset-0 z-0 scale-105">
            {/* Primary Background Image */}
            <img 
-             src="public/assets/images/hero_image.jpg" 
+             src="assets/images/hero_image.jpg" 
              className="w-full h-full object-cover opacity-90 animate-pulse-slow blur-sm" 
              alt="Paper Texture Background"
            />
