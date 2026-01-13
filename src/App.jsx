@@ -4,6 +4,12 @@ import { Menu, X, Instagram, Mail, ChevronRight, ExternalLink, ArrowRight, Chevr
 /**
  * ==============================================================================
  * DATA & CONFIGURATION
+ * ------------------------------------------------------------------------------
+ * HOW TO ADD A NEW PROJECT:
+ * 1. Copy the structure of an existing item below (between { and }).
+ * 2. Paste it at the top of the list (to show it first) or bottom.
+ * 3. Change the 'id' to a unique number.
+ * 4. Update the text strings.
  * ==============================================================================
  */
 
@@ -103,6 +109,7 @@ const AssetImg = ({ filename, alt, className, style, isBackground = false }) => 
 
   if (error) {
     if (isBackground) {
+        // Fallback for background if image fails
       return <div className={`w-full h-full bg-[#EBE9E4] ${className}`} style={style}></div>;
     }
     return (
@@ -186,6 +193,7 @@ const CustomCursor = () => {
   
     return (
       <>
+        {/* Hidden on mobile to prevent weird touch artifacts, visible on md+ */}
         <div ref={cursorRef} className="fixed top-0 left-0 w-3 h-3 bg-[#2D2D2D] rounded-full pointer-events-none z-[9999] -ml-1.5 -mt-1.5 mix-blend-difference hidden md:block" />
         <div ref={followerRef} className="fixed top-0 left-0 w-8 h-8 border border-[#2D2D2D] rounded-full pointer-events-none z-[9998] -ml-4 -mt-4 opacity-50 transition-transform duration-100 ease-out hidden md:block" />
       </>
@@ -273,6 +281,21 @@ export default function App() {
     };
   }, [planeFlying]);
 
+  // Lock Background Scroll
+  useEffect(() => {
+    if (selectedProject || menuOpen) {
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden'; // Lock html as well for mobile support
+    } else {
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+    }
+    return () => {
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+    };
+  }, [selectedProject, menuOpen]);
+
   // Keyboard navigation for lightbox
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -312,8 +335,11 @@ export default function App() {
     <>
     {loading && <Preloader onComplete={() => setLoading(false)} />}
     
-    {/* Added overflow-x-hidden to prevent horizontal scrollbars on mobile */}
-    <div className={`min-h-screen bg-[#F9F7F2] text-[#2D2D2D] font-sans overflow-x-hidden ${loading ? 'h-screen overflow-hidden' : ''}`}>
+    {/* Updates:
+      1. cursor-none: Disables default cursor on desktop (handled by CustomCursor).
+      2. overflow-x-hidden: Prevents horizontal scrolling.
+    */}
+    <div className={`min-h-screen bg-[#F9F7F2] text-[#2D2D2D] font-sans overflow-x-hidden md:cursor-none ${loading ? 'h-screen overflow-hidden' : ''}`}>
       
       <CustomCursor />
 
@@ -437,14 +463,24 @@ export default function App() {
 
       {/* --- HERO SECTION --- */}
       <section id="hero" className="relative h-screen w-full flex items-center justify-center overflow-hidden z-10">
-        {/* Background Image */}
+        
+        {/* Background Image - Added temporary blurred stock image */}
         <div className="absolute inset-0 z-0 scale-105">
-           <AssetImg 
-             filename="hero-bg.jpg" 
-             className="w-full h-full object-cover opacity-90 animate-pulse-slow"
-             isBackground={true}
+           {/* Primary Background Image */}
+           <img 
+             src="https://images.unsplash.com/photo-1518640467707-6811f4a6ab73?q=80&w=2080&auto=format&fit=crop" 
+             className="w-full h-full object-cover opacity-90 animate-pulse-slow blur-sm" 
              alt="Paper Texture Background"
            />
+           {/* Fallback AssetImg logic kept for when you add your real image */}
+           <div className="absolute inset-0 opacity-0">
+             <AssetImg 
+               filename="hero-bg.jpg" 
+               className="w-full h-full object-cover"
+               isBackground={true}
+             />
+           </div>
+           
            <div className="absolute inset-0 bg-white/30 mix-blend-overlay"></div>
         </div>
 
@@ -479,7 +515,6 @@ export default function App() {
       </section>
 
       {/* --- ABOUT SECTION --- */}
-      {/* Updated: scroll-mt-20 to fix overlap gap */}
       <section 
         id="about" 
         ref={aboutSectionRef}
@@ -574,12 +609,11 @@ export default function App() {
       </section>
 
       {/* --- GALLERY SECTION --- */}
-      {/* Updated: scroll-mt-20 to fix overlap gap */}
       <section id="gallery" className="py-24 md:py-32 bg-[#F9F7F2] relative overflow-hidden z-10 scroll-mt-20">
         
-        {/* Texture Background for Gallery Only */}
+        {/* Texture Background for Gallery Only - Z-0 */}
         <div 
-            className="absolute inset-0 pointer-events-none z-0 opacity-40 mix-blend-multiply" 
+            className="absolute inset-0 pointer-events-none z-0 opacity-60 mix-blend-multiply" 
             style={{ 
                 backgroundImage: `url("https://www.transparenttextures.com/patterns/cream-paper.png")`,
                 backgroundRepeat: 'repeat'
@@ -614,27 +648,29 @@ export default function App() {
             </Reveal>
           </div>
 
-          {/* Masonry Grid */}
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
+          {/* LAYOUT UPDATE: Switched from Masonry (columns-1) to Grid.
+             This ensures strict organization and alignment of boxes, eliminating empty gaps on mobile/tablet.
+          */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredItems.map((item, index) => (
               <Reveal key={item.id} delay={index * 50}>
                   <div 
-                    className="break-inside-avoid group cursor-pointer"
+                    className="group cursor-pointer h-full"
                     onClick={() => setSelectedProject(item)}
                   >
-                    <div className="bg-white p-4 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 ease-out">
-                      <div className="relative overflow-hidden aspect-auto bg-stone-100">
+                    <div className="bg-white p-4 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 ease-out h-full flex flex-col">
+                      <div className="relative overflow-hidden aspect-[4/3] bg-stone-100">
                         <AssetImg 
                           filename={item.filename} 
                           alt={item.title} 
-                          className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                          className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
                         />
                         {/* Hover Overlay */}
                         <div className="absolute inset-0 bg-[#2D2D2D]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
                            <span className="bg-white px-6 py-3 text-[10px] uppercase tracking-widest text-[#2D2D2D] font-bold shadow-lg">View Project</span>
                         </div>
                       </div>
-                      <div className="pt-5 pb-2 px-1">
+                      <div className="pt-5 pb-2 px-1 flex-1 flex flex-col justify-end">
                         <div className="flex justify-between items-baseline mb-2">
                              <p className="text-[10px] uppercase tracking-[0.2em] text-[#C4A484]">{item.category}</p>
                              <p className="text-[10px] text-[#999]">{item.year}</p>
@@ -651,7 +687,6 @@ export default function App() {
       </section>
 
       {/* --- CONTACT SECTION --- */}
-      {/* Updated: scroll-mt-20 to fix overlap gap */}
       <section id="contact" className="py-24 md:py-32 bg-[#1a1a1a] text-white relative overflow-hidden z-10 scroll-mt-20">
         {/* Subtle decorative circle */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white opacity-5 rounded-full blur-[100px] pointer-events-none transform translate-x-1/3 -translate-y-1/3"></div>
