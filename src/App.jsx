@@ -269,7 +269,7 @@ export default function App() {
 
   useEffect(() => {
     const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
-    link.type = 'image/jpeg'; link.rel = 'icon'; link.href = 'assets/images/artist-portrait.png';
+    link.type = 'image/jpeg'; link.rel = 'icon'; link.href = 'assets/images/artist-logo.png';
     document.getElementsByTagName('head')[0].appendChild(link);
   }, []);
 
