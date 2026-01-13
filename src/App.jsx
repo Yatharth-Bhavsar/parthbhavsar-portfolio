@@ -248,7 +248,7 @@ export default function App() {
     const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
     link.type = 'image/jpeg';
     link.rel = 'icon';
-    link.href = 'assets/images/artist-portrait.jpg';
+    link.href = 'assets/images/artist-logo.png';
     document.getElementsByTagName('head')[0].appendChild(link);
   }, []);
 
@@ -482,7 +482,7 @@ export default function App() {
            {/* Texture Overlay for Home Page - Z-0 to sit behind text */}
            {/* UPDATED: Increased opacity to 0.4 to match Gallery section */}
            <div 
-                className="absolute inset-0 pointer-events-none z-0 opacity-50 mix-blend-multiply" 
+                className="absolute inset-0 pointer-events-none z-0 opacity-90 mix-blend-multiply" 
                 style={{ 
                     backgroundImage: `url("https://www.transparenttextures.com/patterns/cream-paper.png")`,
                     backgroundRepeat: 'repeat'
@@ -541,7 +541,7 @@ export default function App() {
                       {/* 1. The Circular Image (Upper Half Cropped) */}
                       <div className="w-full h-full rounded-full overflow-hidden border-2 border-[#C4A484] bg-stone-100 shadow-xl relative z-10">
                         <AssetImg 
-                          filename="artist-portrait.jpg" 
+                          filename="artist-portrait.png" 
                           alt="Parth Bhavsar" 
                           className="w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-105 rounded-full"
                         />
@@ -626,7 +626,7 @@ export default function App() {
         {/* Texture Background for Gallery Only - Z-0 to sit behind content.  */}
         {/* Changed opacity to 0.4 and using mix-blend-multiply for visibility */}
         <div 
-            className="absolute inset-0 pointer-events-none z-0 opacity-40 mix-blend-multiply" 
+            className="absolute inset-0 pointer-events-none z-0 opacity-90 mix-blend-multiply" 
             style={{ 
                 backgroundImage: `url("https://www.transparenttextures.com/patterns/cream-paper.png")`,
                 backgroundRepeat: 'repeat'
