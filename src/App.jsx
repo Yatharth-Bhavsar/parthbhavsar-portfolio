@@ -153,12 +153,13 @@ const ImageCarousel = ({ images, alt, className }) => {
       >
         {images.map((img, idx) => (
           <div key={idx} className="w-full h-full flex-shrink-0">
-            <AssetImg filename={img} alt={`${alt} ${idx + 1}`} className={className} />
+            <div className="w-full h-full relative">
+               <AssetImg filename={img} alt={`${alt} ${idx + 1}`} className={className} />
+            </div>
           </div>
         ))}
       </div>
 
-      {/* Internal Navigation Arrows (Smaller to avoid overlap) */}
       <button 
         onClick={prevSlide}
         className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 bg-white/90 rounded-full opacity-0 group-hover/carousel:opacity-100 transition-all hover:bg-white shadow-md text-[#2D2D2D]"
@@ -174,7 +175,6 @@ const ImageCarousel = ({ images, alt, className }) => {
         <ChevronRight size={14} />
       </button>
 
-      {/* Clickable Dots */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-3">
         {images.map((_, idx) => (
           <button 
@@ -373,8 +373,19 @@ export default function App() {
 
       {/* HOME SECTION */}
       <section id="hero" className="relative h-screen w-full flex items-center justify-center overflow-hidden z-10">
+        <div 
+          className="absolute inset-0 z-0 pointer-events-none opacity-15"
+          style={{ 
+            backgroundImage: `url('assets/images/van-gogh.png')`, 
+            backgroundSize: 'cover', 
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        ></div>
+
         <div className="absolute inset-0 z-0 bg-white/30 mix-blend-overlay"></div>
         <div className="absolute inset-0 pointer-events-none z-0 opacity-90 mix-blend-multiply" style={{ backgroundImage: `url("https://www.transparenttextures.com/patterns/cream-paper.png")`, backgroundRepeat: 'repeat' }}></div>
+        
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
           <Reveal delay={200}>
             <h1 className="text-3xl md:text-5xl lg:text-7xl font-serif text-[#2D2D2D] leading-tight mb-8">
@@ -491,7 +502,6 @@ export default function App() {
         <div className="fixed inset-0 z-[300] bg-[#F9F7F2]/95 backdrop-blur-md flex items-center justify-center p-4 md:p-8 animate-fade-in" onClick={() => setSelectedProject(null)}>
           <button className="absolute top-6 right-6 z-[310] p-3 rounded-full bg-white text-[#2D2D2D] hover:bg-[#2D2D2D] hover:text-white transition-all shadow-lg group" onClick={(e) => { e.stopPropagation(); setSelectedProject(null); }}><X size={24} className="group-hover:rotate-90 transition-transform" /></button>
           
-          {/* External project navigation arrows (Positioned outside the image area to prevent overlap) */}
           <button 
             className="hidden lg:flex absolute left-12 top-1/2 -translate-y-1/2 z-[310] p-5 bg-white/40 hover:bg-white rounded-full transition-all text-[#2D2D2D] shadow-xl backdrop-blur-sm" 
             onClick={(e) => { e.stopPropagation(); navigateProject(-1); }}
@@ -506,14 +516,11 @@ export default function App() {
           </button>
 
           <div className="bg-white w-full max-w-6xl h-[85vh] md:h-[80vh] shadow-2xl flex flex-col md:flex-row overflow-hidden rounded-sm" onClick={(e) => e.stopPropagation()}>
-            {/* Image section with its own internal arrows */}
             <div className="w-full md:w-2/3 h-1/2 md:h-full bg-stone-100 flex items-center justify-center p-4 relative overflow-hidden">
               <ImageCarousel images={selectedProject.images} alt={selectedProject.title} className="w-full h-full object-contain" />
             </div>
             
-            {/* Project info section */}
             <div className="w-full md:w-1/3 h-1/2 md:h-full p-8 md:p-12 overflow-y-auto flex flex-col justify-center border-l border-stone-100 relative">
-               {/* Mobile/Tablet project toggle */}
                <div className="flex lg:hidden justify-between mb-8 pb-4 border-b border-stone-100 text-[#888]">
                     <button onClick={() => navigateProject(-1)} className="flex items-center gap-2 hover:text-[#C4A484] transition-colors"><ChevronLeft size={16} /> Prev</button>
                     <span className="text-[10px] uppercase tracking-widest font-bold self-center">Project</span>
