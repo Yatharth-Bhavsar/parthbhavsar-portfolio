@@ -248,7 +248,7 @@ export default function App() {
     const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
     link.type = 'image/jpeg';
     link.rel = 'icon';
-    link.href = 'assets/images/artist-portrait.png';
+    link.href = 'assets/images/artist-portrait.jpg';
     document.getElementsByTagName('head')[0].appendChild(link);
   }, []);
 
@@ -495,8 +495,9 @@ export default function App() {
            
            <div className="absolute inset-0 bg-white/30 mix-blend-overlay"></div>
            {/* Texture Overlay for Home Page - Z-0 to sit behind text */}
+           {/* UPDATED: Increased opacity to 0.4 to match Gallery section */}
            <div 
-                className="absolute inset-0 pointer-events-none z-0 opacity-20 mix-blend-multiply" 
+                className="absolute inset-0 pointer-events-none z-0 opacity-40 mix-blend-multiply" 
                 style={{ 
                     backgroundImage: `url("https://www.transparenttextures.com/patterns/cream-paper.png")`,
                     backgroundRepeat: 'repeat'
@@ -535,13 +536,13 @@ export default function App() {
       </section>
 
       {/* --- ABOUT SECTION --- */}
-      {/* 1. scroll-mt-24: Reduced from 32 to eliminate the visual gap at the top.
+      {/* 1. scroll-mt-20: Reduced from 32 to eliminate the visual gap at the top.
           2. overflow-hidden: Added to trap the flying paper plane (horizontal bar fix).
       */}
       <section 
         id="about" 
         ref={aboutSectionRef}
-        className="py-16 md:py-24 bg-white relative z-10 scroll-mt-24 overflow-hidden"
+        className="py-16 md:py-24 bg-white relative z-10 scroll-mt-20 overflow-hidden"
       >
         <div className="container mx-auto px-6 md:px-12">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
@@ -555,7 +556,7 @@ export default function App() {
                       {/* 1. The Circular Image (Upper Half Cropped) */}
                       <div className="w-full h-full rounded-full overflow-hidden border-2 border-[#C4A484] bg-stone-100 shadow-xl relative z-10">
                         <AssetImg 
-                          filename="artist-portrait.png" 
+                          filename="artist-portrait.jpg" 
                           alt="Parth Bhavsar" 
                           className="w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-105 rounded-full"
                         />
@@ -634,13 +635,13 @@ export default function App() {
       </section>
 
       {/* --- GALLERY SECTION --- */}
-      {/* scroll-mt-24 fixed the overlap gap */}
-      <section id="gallery" className="py-24 md:py-32 bg-[#F9F7F2] relative overflow-hidden z-10 scroll-mt-24">
+      {/* scroll-mt-20 fixed the overlap gap */}
+      <section id="gallery" className="py-24 md:py-32 relative overflow-hidden z-10 scroll-mt-20 bg-[#F9F7F2]">
         
-        {/* Texture Background for Gallery Only - Z-0 to sit behind content */}
-        {/* Reduced opacity from 0.6 to 0.1 to allow text readability */}
+        {/* Texture Background for Gallery Only - Z-0 to sit behind content.  */}
+        {/* Changed opacity to 0.4 and using mix-blend-multiply for visibility */}
         <div 
-            className="absolute inset-0 pointer-events-none z-0 opacity-10 mix-blend-multiply" 
+            className="absolute inset-0 pointer-events-none z-0 opacity-40 mix-blend-multiply" 
             style={{ 
                 backgroundImage: `url("https://www.transparenttextures.com/patterns/cream-paper.png")`,
                 backgroundRepeat: 'repeat'
@@ -714,7 +715,7 @@ export default function App() {
       </section>
 
       {/* --- CONTACT SECTION --- */}
-      <section id="contact" className="py-24 md:py-32 bg-[#1a1a1a] text-white relative overflow-hidden z-10 scroll-mt-24">
+      <section id="contact" className="py-24 md:py-32 bg-[#1a1a1a] text-white relative overflow-hidden z-10 scroll-mt-20">
         {/* Subtle decorative circle */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white opacity-5 rounded-full blur-[100px] pointer-events-none transform translate-x-1/3 -translate-y-1/3"></div>
 
