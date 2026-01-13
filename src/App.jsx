@@ -809,4 +809,3 @@ export default function App() {
     </>
   );
 }
-Check this code 
