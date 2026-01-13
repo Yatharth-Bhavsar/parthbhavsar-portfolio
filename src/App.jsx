@@ -477,27 +477,12 @@ export default function App() {
       <section id="hero" className="relative h-screen w-full flex items-center justify-center overflow-hidden z-10">
         
         {/* Background Image - Added temporary blurred stock image */}
-        <div className="absolute inset-0 z-0 scale-105">
-           {/* Primary Background Image */}
-           <img 
-             src="assets/images/hero_image.jpg" 
-             className="w-full h-full object-cover opacity-90 animate-pulse-slow blur-sm" 
-             alt="Paper Texture Background"
-           />
-           {/* Fallback AssetImg logic kept for when you add your real image */}
-           <div className="absolute inset-0 opacity-0">
-             <AssetImg 
-               filename="hero_image.jpg" 
-               className="w-full h-full object-cover"
-               isBackground={true}
-             />
-           </div>
-           
+        <div className="absolute inset-0 z-0 scale-105">           
            <div className="absolute inset-0 bg-white/30 mix-blend-overlay"></div>
            {/* Texture Overlay for Home Page - Z-0 to sit behind text */}
            {/* UPDATED: Increased opacity to 0.4 to match Gallery section */}
            <div 
-                className="absolute inset-0 pointer-events-none z-0 opacity-40 mix-blend-multiply" 
+                className="absolute inset-0 pointer-events-none z-0 opacity-50 mix-blend-multiply" 
                 style={{ 
                     backgroundImage: `url("https://www.transparenttextures.com/patterns/cream-paper.png")`,
                     backgroundRepeat: 'repeat'
