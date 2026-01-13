@@ -248,7 +248,7 @@ export default function App() {
     const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
     link.type = 'image/jpeg';
     link.rel = 'icon';
-    link.href = '/assets/images/artist-portrait.jpg';
+    link.href = '/assets/images/artist-portrait.png';
     document.getElementsByTagName('head')[0].appendChild(link);
   }, []);
 
@@ -459,7 +459,7 @@ export default function App() {
             </button>
           ))}
         </nav>
-      </div>
+      </div>s
 
       {/* --- HERO SECTION --- */}
       <section id="hero" className="relative h-screen w-full flex items-center justify-center overflow-hidden z-10">
@@ -468,14 +468,14 @@ export default function App() {
         <div className="absolute inset-0 z-0 scale-105">
            {/* Primary Background Image */}
            <img 
-             src="https://images.unsplash.com/photo-1518640467707-6811f4a6ab73?q=80&w=2080&auto=format&fit=crop" 
+             src="/assets/images/hero_image.jpg" 
              className="w-full h-full object-cover opacity-90 animate-pulse-slow blur-sm" 
              alt="Paper Texture Background"
            />
            {/* Fallback AssetImg logic kept for when you add your real image */}
            <div className="absolute inset-0 opacity-0">
              <AssetImg 
-               filename="hero-bg.jpg" 
+               filename="hero_image.jpg" 
                className="w-full h-full object-cover"
                isBackground={true}
              />
@@ -532,7 +532,7 @@ export default function App() {
                       {/* 1. The Circular Image (Upper Half Cropped) */}
                       <div className="w-full h-full rounded-full overflow-hidden border-2 border-[#C4A484] bg-stone-100 shadow-xl relative z-10">
                         <AssetImg 
-                          filename="artist-portrait.jpg" 
+                          filename="artist-portrait.png" 
                           alt="Parth Bhavsar" 
                           className="w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-105"
                         />
