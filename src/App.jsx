@@ -294,7 +294,7 @@ const CATEGORIES = ["All", "Architecture", "Divine", "Sanjhi", "Islamic Geometry
  */
 const AssetImg = ({ filename, alt, className, style, isBackground = false }) => {
   const [error, setError] = useState(false);
-  const path = `assets/images/${filename}`;
+  const path = `/assets/images/${filename}`;
 
   if (error) {
     if (isBackground) return <div className={`w-full h-full bg-[#EBE9E4] ${className}`} style={style}></div>;
