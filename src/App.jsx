@@ -53,7 +53,7 @@ const PORTFOLIO_ITEMS = [
     title: "Komatsu D155AX Bulldozer",
     category: "Mechanical Models",
     images: ["bulldozer.jpeg"],
-    description: "Komatsu D155AX Bulldozer. Paper Model A detailed handcrafted paper model featuring a functional front blade with realistic up-and-down movement.",
+    description: "Komatsu D155AX Bulldozer. Paper Model A detailed handcrafted paper model featuring a functional front blade with realistic up-and-down movement. The design highlights precision, mechanical accuracy, and the expressive potential of paper as an engineering-inspired art medium.",
     year: "2023",
   },
   {
@@ -61,7 +61,7 @@ const PORTFOLIO_ITEMS = [
     title: "Paper Crane Model - Conceptual",
     category: "Mechanical Models",
     images: ["paper-crane.jpeg"],
-    description: "HEAVY-DUTY PAPERWORK. This paper crane model meticulously replicates a real crane, but with a unique twist: its entire upper portion rotates a full 360 degrees.",
+    description: "HEAVY-DUTY PAPERWORK. This paper crane model meticulously replicates a real crane, but with a unique twist: its entire upper portion rotates a full 360 degrees. This playful detail allows for dynamic display and showcases paper art's imaginative scope.",
     year: "2023",
   },
   {
@@ -69,7 +69,7 @@ const PORTFOLIO_ITEMS = [
     title: "AVIATION IN EVERY FOLD",
     category: "Mechanical Models",
     images: ["chipmunk_1.jpeg", "chipmunk_2.jpeg"],
-    description: "De Havilland Canada DHC-1 Chipmunk. A two-seat, single-engine primary trainer aircraft developed shortly after World War II.",
+    description: "De Havilland Canada DHC-1 Chipmunk\nA two-seat, single-engine primary trainer aircraft developed shortly after World War II. Widely adopted by air forces such as the RCAF and RAF, the Chipmunk replaced the Tiger Moth and became a standard training aircraft, powered by a de Havilland Gipsy Major piston engine with a fixed-pitch propeller.",
     year: "2023",
   },
   {
@@ -85,7 +85,7 @@ const PORTFOLIO_ITEMS = [
     title: "JUST ANOTHER PURR-FECTLY ANGLED CAT",
     category: "Miniatures",
     images: ["paper_cat.jpeg"],
-    description: "A carefully handcrafted paper model capturing the gentle form and character of a cat.",
+    description: "A carefully handcrafted paper model capturing the gentle form and character of a cat. With clean lines and subtle detailing, the piece highlights the charm, simplicity, and expressive potential of paper as an artistic medium.",
     year: "2023",
   },
   {
@@ -101,7 +101,7 @@ const PORTFOLIO_ITEMS = [
     title: "THE STILLNESS WITHIN",
     category: "Sanjhi",
     images: ["buddha_sanjhi.jpeg"],
-    description: "Through the detailed artistry of Sanjhi, this piece depicts Lord Buddha's path to enlightenment.",
+    description: "Through the detailed artistry of Sanjhi, this piece depicts Lord Buddha's path to enlightenment. The handcrafted paper design conveys a sense of quiet contemplation and inner wisdom, reflecting both the beauty of the art form and the serene nature of the subject.",
     year: "2022",
   },
   {
@@ -109,7 +109,7 @@ const PORTFOLIO_ITEMS = [
     title: "A DIVINE MELODY",
     category: "Sanjhi",
     images: ["krishna_sanjhi.jpeg"],
-    description: "Delicately cut from paper, this Sanjhi artwork depicts Lord Krishna as the eternal musician, whose flute weaves devotion into the air.",
+    description: "Delicately cut from paper, this Sanjhi artwork depicts Lord Krishna as the eternal musician, whose flute weaves devotion into the air. Each intricate layer echoes the quiet rhythm of faith, capturing the timeless beauty and spiritual grace inspired by his divine music.",
     year: "2022",
   },
   {
@@ -117,7 +117,7 @@ const PORTFOLIO_ITEMS = [
     title: "THE DIVINE GAZE",
     category: "Sanjhi",
     images: ["shreenathji_sanjhi.jpeg"],
-    description: "Crafted through the delicate art of Sanjhi, this piece portrays Shreenathji, the revered form of Lord Krishna.",
+    description: "Crafted through the delicate art of Sanjhi, this piece portrays Shreenathji, the revered form of Lord Krishna. Intricate paper layers express the deity’s serene majesty, inviting quiet contemplation and a gentle sense of spiritual connection.",
     year: "2022",
   },
   {
@@ -125,7 +125,7 @@ const PORTFOLIO_ITEMS = [
     title: "MEDITATIVE GEOMETRY",
     category: "Islamic Geometry",
     images: ["8_fold_rosette.jpeg"],
-    description: "My hand-drawn 8-fold rosette invites you into the intricate world of Islamic patterns.",
+    description: "My hand-drawn 8-fold rosette invites you into the intricate world of Islamic patterns. Each precise line reveals the elegant repetition and proportional harmony, reflecting the meditative journey of creating these complex and beautiful designs.",
     year: "2023",
   },
   {
@@ -133,7 +133,7 @@ const PORTFOLIO_ITEMS = [
     title: "INTERWOVEN HARMONY",
     category: "Islamic Geometry",
     images: ["islamic_geometry_1.jpeg", "islamic_geometry_2.jpeg", "islamic_geometry_3.jpeg"],
-    description: "Crafted from a single sheet of paper using a precision knife, this paper cut design delves into profound symmetry.",
+    description: "Crafted from a single sheet of paper using a precision knife, this paper cut design delves into the profound symmetry and endless possibilities of Islamic design.",
     year: "2023",
   },
   {
@@ -141,7 +141,7 @@ const PORTFOLIO_ITEMS = [
     title: "GEOMETRIC GRACE",
     category: "Islamic Geometry",
     images: ["9_fold_rosette-1.jpeg","9_fold_rosette-2.jpeg"],
-    description: "This miniature artwork presents the 9-fold rosette, a classic Islamic geometric pattern.",
+    description: "This miniature artwork presents the 9-fold rosette, a classic Islamic geometric pattern. Handcrafted with precision and fine detail, the design invites close observation, revealing the beauty and complexity within its symmetrical form.",
     year: "2023",
   },
   {
@@ -157,7 +157,7 @@ const PORTFOLIO_ITEMS = [
     title: "LATTICE OF LIGHT",
     category: "Islamic Geometry",
     images: ["lattice_of_light.jpeg"],
-    description: "More than a pattern, this piece channels the energy of the sun.",
+    description: "More than a pattern, this piece channels the energy of the sun, with an intricate lattice that echoes its radiant power and glow.",
     year: "2023",
   },
   {
@@ -165,7 +165,7 @@ const PORTFOLIO_ITEMS = [
     title: "A WORLD CONNECTED",
     category: "Islamic Geometry",
     images: ["a_world_connected.jpeg"],
-    description: "Delicately hand-cut, this piece reimagines the Expo 2020 Dubai logo as a lace-like form.",
+    description: "Delicately hand-cut, this piece reimagines the Expo 2020 Dubai logo as a lace-like form, expressing the harmony of unity in diversity through intricate detail and balance.",
     year: "2023",
   },
   {
@@ -173,7 +173,7 @@ const PORTFOLIO_ITEMS = [
     title: "Sidi Saiyed Ni Jaali",
     category: "Architecture",
     images: ["sidi_saiyed-1.png", "sidi_saiyed-2.jpeg", "sidi_saiyed-3.jpg"],
-    description: "A handcrafted paper interpretation of the Sidi Saiyed ni Jali, highlighting the detailed latticework and the iconic 'Tree of Life' motif.",
+    description: "A handcrafted paper interpretation of the Sidi Saiyed ni Jali, highlighting the detailed latticework and the iconic 'Tree of Life' motif. This work took 21 days of careful carving, transforming a simple sheet into an architectural marvel.",
     year: "2023",
   },
   {
@@ -181,7 +181,7 @@ const PORTFOLIO_ITEMS = [
     title: "A Piece of Ahmedabad",
     category: "Architecture",
     images: ["atal_bridge.jpeg"],
-    description: "This handcrafted paper model is a replica miniature of Ahmedabad's Atal Bridge, recreated with close attention to structural accuracy.",
+    description: "This handcrafted paper model is a replica miniature of Ahmedabad's Atal Bridge, recreated with close attention to structural accuracy and detail. Built at a reduced scale, the model captures the form and character of the original landmark, demonstrating how paper craftsmanship can faithfully translate large-scale architecture into an intimate, tangible format.",
     year: "2024",
   },
   {
@@ -189,7 +189,7 @@ const PORTFOLIO_ITEMS = [
     title: "WORK IN PROGRESS",
     category: "Architecture",
     images: ["work_in_progress-1.jpeg", "work_in_progress-2.jpeg", "work_in_progress-3.jpeg"],
-    description: "Inspired by the dynamic energy of a real construction site, this miniature paper scene brings large-scale engineering into an interactive, handcrafted form.",
+    description: "Inspired by the dynamic energy of a real construction site, this miniature paper scene brings large-scale engineering into an interactive, handcrafted form. At its center stands a fully functional rotating crane, powered by an intricately engineered paper mechanism. Designed to be more than static art, the model invites direct engagement through a playful “Try Me!” button, echoing the tactile joy of classic toy design. Together, movement and detail capture the ongoing process of construction and the fascination behind how things are built—scaled down, yet alive.",
     year: "2024",
   },
   {
@@ -205,7 +205,7 @@ const PORTFOLIO_ITEMS = [
     title: "MODELLING THE MUNDANE",
     category: "Architecture",
     images: ["shell_pump-1.jpeg", "shell_pump-2.jpeg"],
-    description: "A miniature Shell petrol pump, built with meticulous detail to capture everyday reality in a tiny form.",
+    description: "A miniature Shell petrol pump, built with meticulous detail to capture everyday reality in a tiny form. It's a snapshot of the familiar, condensed into a small, tangible piece of a larger world.",
     year: "2024",
   },
   {
@@ -221,7 +221,7 @@ const PORTFOLIO_ITEMS = [
     title: "PAPER TORII",
     category: "Architecture",
     images: ["paper_torii-1.jpeg", "paper_torii-2.jpeg"],
-    description: "A miniature homage to the iconic Japanese Torii gates.",
+    description: "A miniature homage to India's valor at India Gate.",
     year: "2024",
   },
   {
@@ -229,7 +229,7 @@ const PORTFOLIO_ITEMS = [
     title: "Miniature Guitar",
     category: "Musical Instruments",
     images: ["match_box_guitar.jpeg"],
-    description: "A carefully crafted miniature guitar made from a matchbox.",
+    description: "A carefully crafted miniature guitar made from a matchbox, transforming an everyday object into a detailed and unexpected expression of creativity and craftsmanship.",
     year: "2023",
   },
   {
@@ -237,7 +237,7 @@ const PORTFOLIO_ITEMS = [
     title: "HARMONIOUS LITTLE CREATION",
     category: "Musical Instruments",
     images: ["harmonium.jpeg"],
-    description: "A hand-crafted paper miniature inspired by the warm, retro charm of a classic harmonium.",
+    description: "A hand-crafted paper miniature inspired by the warm, retro charm of a classic harmonium. Finished in earthy brown tones, the model captures fine details and vintage character, transforming simple paper into a timeless expression of music and craftsmanship.",
     year: "2022",
   },
   {
@@ -245,7 +245,7 @@ const PORTFOLIO_ITEMS = [
     title: "POCKET-SIZED SYMPHONY",
     category: "Musical Instruments",
     images: ["piano.jpeg"],
-    description: "My hand-crafted miniature keyboard brings the magic of musical instruments to life in a tiny form.",
+    description: "My hand-crafted miniature keyboard brings the magic of musical instruments to life in a tiny form. Every detail is carefully designed, transforming simple materials into a creative expression of sound.",
     year: "2022",
   },
   {
@@ -253,7 +253,7 @@ const PORTFOLIO_ITEMS = [
     title: "Built for Speed (F1)",
     category: "Miniatures",
     images: ["f1_diorama-1.jpeg", "f1_diorama-2.jpeg", "f1_diorama-3.jpeg"],
-    description: "Handcrafted F1 podium finish in miniature. Features a racetrack base textured with sandpaper.",
+    description: "Handcrafted F1 podium finish in miniature. Features a racetrack base textured with sandpaper and safety nets made from repurposed cotton bandage.",
     year: "2024",
   },
   {
@@ -261,20 +261,20 @@ const PORTFOLIO_ITEMS = [
     title: "FLYING IN FORMATION",
     category: "Miniatures",
     images: ["surya-kiran.jpeg"],
-    description: "This work captures the breathtaking precision of the Indian Air Force's Surya Kiran Aerobatic Team.",
+    description: "This work captures the breathtaking precision of the Indian Air Force's Surya Kiran Aerobatic Team in tight formation. Featuring the agile BAe Hawk Mk.132, it reflects exceptional coordination, skill, and the spirit of aerial excellence that defines the Indian Air Force.",
     year: "2023",
   },
   {
     id: 33,
-    title: "READY TO FLY",
+    title: "READY TO FLY THE NEW FEELING",
     category: "Miniatures",
     images: ["indigo_mini.png"],
-    description: "Inspired by the vibrant spirit of Indigo Airlines, I've transformed a sheet of paper into this miniature Airbus A320.",
+    description: "Inspired by the seamless journeys and vibrant spirit of Indigo Airlines, I've transformed a simple sheet of paper into this miniature Airbus A320.",
     year: "2023",
   },
   {
     id: 34,
-    title: "RADIATOR SPRINGS' EXPERT",
+    title: "RADIATOR SPRINGS' TYRE EXPERT",
     category: "Miniatures",
     images: ["guido.jpeg"],
     description: "A tribute to Guido, the forklift with the fastest hands in Disney Pixar Cars.",
@@ -432,6 +432,16 @@ export default function App() {
   const [planeFlying, setPlaneFlying] = useState(false);
   const aboutSectionRef = useRef(null);
 
+  // DYNAMIC FAVICON & TITLE
+  useEffect(() => {
+    const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+    link.type = 'image/png';
+    link.rel = 'shortcut icon';
+    link.href = '/assets/images/artist-logo.png';
+    document.getElementsByTagName('head')[0].appendChild(link);
+    document.title = "Parth Bhavsar | Paper Artist";
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
@@ -495,6 +505,7 @@ export default function App() {
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         * { -webkit-tap-highlight-color: transparent; }
+        *:focus { outline: none; }
         ::selection { background: #C4A484; color: white; }
         @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-10px) rotate(2deg); } }
         .animate-float { animation: float 4s ease-in-out infinite; }
