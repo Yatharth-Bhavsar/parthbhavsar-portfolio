@@ -4,6 +4,9 @@ import { Menu, X, Instagram, Mail, ChevronRight, ExternalLink, ArrowRight, Chevr
 /**
  * ==============================================================================
  * DATA & CONFIGURATION
+ * ------------------------------------------------------------------------------
+ * HOW TO ADD A NEW PROJECT WITH MULTIPLE IMAGES:
+ * Update 'images' to be an array: images: ["img1.jpg", "img2.jpg"]
  * ==============================================================================
  */
 
@@ -220,8 +223,8 @@ const PORTFOLIO_ITEMS = [
     id: 27,
     title: "PAPER TORII",
     category: "Architecture",
-    images: ["paper_torii-1.jpg", "paper_torii-2.jpg"],
-    description: "This design, reminiscent of a Japanese Torii gate, is inspired by the Miyawaki Garden's integration of nature and structure, representing a transition to a revitalized green space.",
+    images: ["paper_torii-1.jpeg", "paper_torii-2.jpeg"],
+    description: "A miniature homage to India's valor at India Gate..",
     year: "2024",
   },
   {
@@ -237,7 +240,7 @@ const PORTFOLIO_ITEMS = [
     title: "My HARMONIOUS LITTLE CREATION",
     category: "Musical Instruments",
     images: ["harmonium.jpeg"],
-    description: "A hand-crafted paper miniature harmonium inspired by the warm, retro charm of a classic harmonium. Finished in earthy brown tones, the model captures fine details and vintage character, transforming simple paper into a timeless expression of music and craftsmanship.",
+    description: "A hand-crafted paper miniature inspired by the warm, retro charm of a classic harmonium. Finished in earthy brown tones, the model captures fine details and vintage character, transforming simple paper into a timeless expression of music and craftsmanship.",
     year: "2022",
   },
   {
@@ -718,20 +721,28 @@ export default function App() {
               <ImageCarousel images={selectedProject.images} alt={selectedProject.title} className="w-full h-full object-contain" />
             </div>
             
-            {/* Project info section */}
-            <div className="w-full md:w-1/3 h-1/2 md:h-full p-8 md:p-12 overflow-y-auto flex flex-col justify-center border-l border-stone-100 relative">
+            {/* Project info section - FIXED SCROLLING AND CONTAINMENT */}
+            <div className="w-full md:w-1/3 h-1/2 md:h-full p-8 md:p-12 overflow-y-auto flex flex-col border-l border-stone-100 relative bg-white">
                {/* Mobile/Tablet project toggle - NAVIGATION REMOVED, SPACE KEPT EMPTY AS REQUESTED */}
-               <div className="flex lg:hidden justify-between mb-8 pb-4 border-b border-stone-100 text-[#888] h-10">
+               <div className="flex lg:hidden justify-between mb-8 pb-4 border-b border-stone-100 text-[#888] h-10 flex-shrink-0">
                     {/* Navigation buttons removed for phone layout */}
                </div>
                
-               <div className="animate-fade-in">
-                 <span className="text-[#C4A484] text-xs uppercase tracking-[0.25em] block mb-4 font-bold">{selectedProject.category} — {selectedProject.year}</span>
-                 <h2 className="text-3xl md:text-4xl font-serif text-[#2D2D2D] mb-6 leading-tight">{selectedProject.title}</h2>
-                 <div className="w-16 h-[2px] bg-[#2D2D2D] opacity-10 mb-8"></div>
-                 <p className="text-[#555] font-light leading-relaxed mb-8 text-sm md:text-base">{selectedProject.description}</p>
+               {/* Container for content that handles overflow without justify-center pushing items off-screen */}
+               <div className="animate-fade-in flex-1">
+                 <div className="mb-4">
+                   <span className="text-[#C4A484] text-xs uppercase tracking-[0.25em] block mb-4 font-bold">{selectedProject.category} — {selectedProject.year}</span>
+                   <h2 className="text-3xl md:text-4xl font-serif text-[#2D2D2D] mb-6 leading-tight break-words">{selectedProject.title}</h2>
+                   <div className="w-16 h-[2px] bg-[#2D2D2D] opacity-10 mb-8"></div>
+                 </div>
+                 <p className="text-[#555] font-light leading-relaxed mb-12 text-sm md:text-base whitespace-pre-wrap">
+                   {selectedProject.description}
+                 </p>
                </div>
-               <div className="mt-auto pt-6 border-t border-stone-100"><p className="text-xs text-[#888] italic">Artwork by Parth Bhavsar</p></div>
+               
+               <div className="mt-auto pt-6 border-t border-stone-100 flex-shrink-0">
+                 <p className="text-xs text-[#888] italic">Artwork by Parth Bhavsar</p>
+               </div>
             </div>
           </div>
         </div>
