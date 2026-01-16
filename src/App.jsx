@@ -4,9 +4,6 @@ import { Menu, X, Instagram, Mail, ChevronRight, ExternalLink, ArrowRight, Chevr
 /**
  * ==============================================================================
  * DATA & CONFIGURATION
- * ------------------------------------------------------------------------------
- * HOW TO ADD A NEW PROJECT WITH MULTIPLE IMAGES:
- * Update 'images' to be an array: images: ["img1.jpg", "img2.jpg"]
  * ==============================================================================
  */
 
@@ -29,14 +26,6 @@ const PORTFOLIO_ITEMS = [
   },
   {
     id: 3,
-    title: "A TRIO OF BLESSINGS",
-    category: "Divine",
-    images: ["jagannath.jpeg"],
-    description: "Celebrating the vibrant presence of Shri Lord Jagannath ji, Balabhadra ji and Subhadra ji",
-    year: "2024",
-  },
-  {
-    id: 4,
     title: "The Maverick's Gaze",
     category: "Portraits",
     images: ["tesla-halftone.jpeg"],
@@ -44,7 +33,7 @@ const PORTFOLIO_ITEMS = [
     year: "2024",
   },
   {
-    id: 5,
+    id: 4,
     title: "RACING LINES",
     category: "Portraits",
     images: ["vettel.jpeg"],
@@ -52,7 +41,7 @@ const PORTFOLIO_ITEMS = [
     year: "2024",
   },
   {
-    id: 6,
+    id: 5,
     title: "Komatsu Excavator",
     category: "Mechanical Models",
     images: ["excavator.jpeg"],
@@ -60,7 +49,7 @@ const PORTFOLIO_ITEMS = [
     year: "2023",
   },
   {
-    id: 7,
+    id: 6,
     title: "Komatsu D155AX Bulldozer",
     category: "Mechanical Models",
     images: ["bulldozer.jpeg"],
@@ -68,7 +57,7 @@ const PORTFOLIO_ITEMS = [
     year: "2023",
   },
   {
-    id: 8,
+    id: 7,
     title: "Paper Crane Model - Conceptual",
     category: "Mechanical Models",
     images: ["paper-crane.jpeg"],
@@ -76,7 +65,7 @@ const PORTFOLIO_ITEMS = [
     year: "2023",
   },
   {
-    id: 9,
+    id: 8,
     title: "AVIATION IN EVERY FOLD",
     category: "Mechanical Models",
     images: ["chipmunk_1.jpeg", "chipmunk_2.jpeg"],
@@ -84,11 +73,19 @@ const PORTFOLIO_ITEMS = [
     year: "2023",
   },
   {
-    id: 10,
+    id: 9,
     title: "A TRIAD OF MOTION,  FROZEN IN STILLNESS",
     category: "Mechanical Models",
     images: ["rickshaw.jpeg"],
     description: "A handcrafted paper rickshaw that  captures the spirit of movement in a moment of stillness, three wheels, one story paused in paper.",
+    year: "2023",
+  },
+  {
+    id: 10,
+    title: "JUST ANOTHER PURR-FECTLY ANGLED CAT",
+    category: "Miniatures",
+    images: ["paper_cat.jpeg"],
+    description: "A carefully handcrafted paper model capturing the gentle form and character of a cat. With clean lines and subtle detailing, the piece highlights the charm, simplicity, and expressive potential of paper as an artistic medium.",
     year: "2023",
   },
   {
@@ -184,7 +181,7 @@ const PORTFOLIO_ITEMS = [
     title: "A Piece of Ahmedabad, in Hand",
     category: "Architecture",
     images: ["atal_bridge.jpeg"],
-    description: "This handcrafted paper model is a replica miniature of Ahmedabad’s Atal Bridge, recreated with close attention to structural accuracy and detail. Built at a reduced scale, the model captures the form and character of the original landmark, demonstrating how paper craftsmanship can faithfully translate large-scale architecture into an intimate, tangible format.",
+    description: "This handcrafted paper model is a replica miniature of Ahmedabad's Atal Bridge, recreated with close attention to structural accuracy and detail. Built at a reduced scale, the model captures the form and character of the original landmark, demonstrating how paper craftsmanship can faithfully translate large-scale architecture into an intimate, tangible format.",
     year: "2024",
   },
   {
@@ -281,14 +278,6 @@ const PORTFOLIO_ITEMS = [
     category: "Miniatures",
     images: ["guido.jpeg"],
     description: "A tribute to Guido, the forklift with the fastest hands in Disney Pixar Cars.",
-    year: "2023",
-  },
-  {
-    id: 35,
-    title: "JUST ANOTHER PURR-FECTLY ANGLED CAT",
-    category: "Miniatures",
-    images: ["paper_cat.jpeg"],
-    description: "A carefully handcrafted paper model capturing the gentle form and character of a cat. With clean lines and subtle detailing, the piece highlights the charm, simplicity, and expressive potential of paper as an artistic medium.",
     year: "2023",
   }
 ];
@@ -399,7 +388,7 @@ function useOnScreen(ref, rootMargin = "0px") {
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => setIntersecting(entry.isIntersecting), { rootMargin });
     if (ref.current) observer.observe(ref.current);
-    return () => ref.current && observer.unobserve(ref.current);
+    return () => { if (ref.current) observer.unobserve(ref.current); };
   }, [ref, rootMargin]);
   return isIntersecting;
 }
@@ -479,11 +468,17 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // AUTOMATIC PLANE FLIGHT ON SCROLL
   useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => { if (!entry.isIntersecting && planeFlying) setPlaneFlying(false); }, { threshold: 0 });
+    const observer = new IntersectionObserver(([entry]) => { 
+      if (entry.isIntersecting) {
+        setPlaneFlying(true);
+      }
+    }, { threshold: 0.3 }); // Trigger when 30% of the section is visible
+    
     if (aboutSectionRef.current) observer.observe(aboutSectionRef.current);
     return () => { if (aboutSectionRef.current) observer.unobserve(aboutSectionRef.current); };
-  }, [planeFlying]);
+  }, []);
 
   useEffect(() => {
     if (selectedProject || menuOpen) {
@@ -658,7 +653,8 @@ export default function App() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredItems.map((item, index) => (
-              <Reveal key={item.id} delay={index * 50}>
+              // DELAY REMOVED AS REQUESTED
+              <Reveal key={item.id}>
                   <div className="group cursor-pointer h-full" onClick={() => setSelectedProject(item)}>
                     <div className="bg-white p-4 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 ease-out h-full flex flex-col">
                       <div className="relative overflow-hidden aspect-[4/3] bg-stone-100 rounded-sm">
@@ -702,6 +698,7 @@ export default function App() {
         <div className="fixed inset-0 z-[300] bg-[#F9F7F2]/95 backdrop-blur-md flex items-center justify-center p-4 md:p-8 animate-fade-in" onClick={() => setSelectedProject(null)}>
           <button className="absolute top-6 right-6 z-[310] p-3 rounded-full bg-white text-[#2D2D2D] hover:bg-[#2D2D2D] hover:text-white transition-all shadow-lg group" onClick={(e) => { e.stopPropagation(); setSelectedProject(null); }}><X size={24} className="group-hover:rotate-90 transition-transform" /></button>
           
+          {/* External project navigation arrows - PC ONLY (hidden on small screens) */}
           <button 
             className="hidden lg:flex absolute left-12 top-1/2 -translate-y-1/2 z-[310] p-5 bg-white/40 hover:bg-white rounded-full transition-all text-[#2D2D2D] shadow-xl backdrop-blur-sm" 
             onClick={(e) => { e.stopPropagation(); navigateProject(-1); }}
@@ -716,15 +713,16 @@ export default function App() {
           </button>
 
           <div className="bg-white w-full max-w-6xl h-[85vh] md:h-[80vh] shadow-2xl flex flex-col md:flex-row overflow-hidden rounded-sm" onClick={(e) => e.stopPropagation()}>
+            {/* Image section with its own internal arrows */}
             <div className="w-full md:w-2/3 h-1/2 md:h-full bg-stone-100 flex items-center justify-center p-4 relative overflow-hidden">
               <ImageCarousel images={selectedProject.images} alt={selectedProject.title} className="w-full h-full object-contain" />
             </div>
             
+            {/* Project info section */}
             <div className="w-full md:w-1/3 h-1/2 md:h-full p-8 md:p-12 overflow-y-auto flex flex-col justify-center border-l border-stone-100 relative">
-               <div className="flex lg:hidden justify-between mb-8 pb-4 border-b border-stone-100 text-[#888]">
-                    <button onClick={() => navigateProject(-1)} className="flex items-center gap-2 hover:text-[#C4A484] transition-colors"><ChevronLeft size={16} /> Prev</button>
-                    <span className="text-[10px] uppercase tracking-widest font-bold self-center">Project</span>
-                    <button onClick={() => navigateProject(1)} className="flex items-center gap-2 hover:text-[#C4A484] transition-colors">Next <ChevronRight size={16} /></button>
+               {/* Mobile/Tablet project toggle - NAVIGATION REMOVED, SPACE KEPT EMPTY AS REQUESTED */}
+               <div className="flex lg:hidden justify-between mb-8 pb-4 border-b border-stone-100 text-[#888] h-10">
+                    {/* Navigation buttons removed for phone layout */}
                </div>
                
                <div className="animate-fade-in">
