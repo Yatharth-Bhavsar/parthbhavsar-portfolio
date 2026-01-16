@@ -220,7 +220,7 @@ const PORTFOLIO_ITEMS = [
     id: 27,
     title: "PAPER TORII",
     category: "Architecture",
-    images: ["paper_torii-1.jpeg", "paper_torii-2.jpeg"],
+    images: ["paper_torii-1.jpg", "paper_torii-2.jpg"],
     description: "A miniature homage to India's valor at India Gate..",
     year: "2024",
   },
