@@ -716,19 +716,19 @@ export default function App() {
           </button>
 
           <div className="bg-white w-full max-w-6xl h-[85vh] md:h-[80vh] shadow-2xl flex flex-col md:flex-row overflow-hidden rounded-sm" onClick={(e) => e.stopPropagation()}>
-            {/* Image section with its own internal arrows */}
-            <div className="w-full md:w-2/3 h-1/2 md:h-full bg-stone-100 flex items-center justify-center p-4 relative overflow-hidden">
+            {/* Image section with its own internal arrows - FIXED HEIGHT ON MOBILE TO PREVENT OVERLAP */}
+            <div className="w-full md:w-2/3 h-[45%] md:h-full bg-stone-100 flex items-center justify-center p-4 relative overflow-hidden flex-shrink-0">
               <ImageCarousel images={selectedProject.images} alt={selectedProject.title} className="w-full h-full object-contain" />
             </div>
             
-            {/* Project info section - FIXED SCROLLING AND CONTAINMENT */}
-            <div className="w-full md:w-1/3 h-1/2 md:h-full p-8 md:p-12 overflow-y-auto flex flex-col border-l border-stone-100 relative bg-white">
-               {/* Mobile/Tablet project toggle - NAVIGATION REMOVED, SPACE KEPT EMPTY AS REQUESTED */}
-               <div className="flex lg:hidden justify-between mb-8 pb-4 border-b border-stone-100 text-[#888] h-10 flex-shrink-0">
-                    {/* Navigation buttons removed for phone layout */}
+            {/* Project info section - FIXED SCROLLING AND STRICT SEPARATION */}
+            <div className="w-full md:w-1/3 h-[55%] md:h-full p-6 md:p-12 overflow-y-auto flex flex-col justify-start border-l border-stone-100 relative bg-white">
+               {/* Mobile/Tablet project toggle space - EMPTY AS REQUESTED */}
+               <div className="flex lg:hidden justify-between mb-4 pb-4 border-b border-stone-100 text-[#888] flex-shrink-0">
+                    {/* Navigation removed for phone layout */}
                </div>
                
-               {/* Container for content that handles overflow without justify-center pushing items off-screen */}
+               {/* Container for content that handles overflow and keeps title at top */}
                <div className="animate-fade-in flex-1">
                  <div className="mb-4">
                    <span className="text-[#C4A484] text-xs uppercase tracking-[0.25em] block mb-4 font-bold">{selectedProject.category} — {selectedProject.year}</span>
