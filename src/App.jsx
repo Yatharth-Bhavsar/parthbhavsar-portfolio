@@ -221,7 +221,7 @@ const PORTFOLIO_ITEMS = [
     title: "PAPER TORII",
     category: "Architecture",
     images: ["paper_torii-1.jpg", "paper_torii-2.jpg"],
-    description: "A miniature homage to India's valor at India Gate..",
+    description: "This design, reminiscent of a Japanese Torii gate, is inspired by the Miyawaki Garden's integration of nature and structure, representing a transition to a revitalized green space.",
     year: "2024",
   },
   {
@@ -237,7 +237,7 @@ const PORTFOLIO_ITEMS = [
     title: "My HARMONIOUS LITTLE CREATION",
     category: "Musical Instruments",
     images: ["harmonium.jpeg"],
-    description: "A hand-crafted paper miniature inspired by the warm, retro charm of a classic harmonium. Finished in earthy brown tones, the model captures fine details and vintage character, transforming simple paper into a timeless expression of music and craftsmanship.",
+    description: "A hand-crafted paper miniature harmonium inspired by the warm, retro charm of a classic harmonium. Finished in earthy brown tones, the model captures fine details and vintage character, transforming simple paper into a timeless expression of music and craftsmanship.",
     year: "2022",
   },
   {
